@@ -8,7 +8,7 @@ use DB;
 class UserController extends Controller
 {
     public function index(){
-        $artikel = DB::table('artikel')->orderBy('date','desc')->paginate(3);
+        $artikel = DB::table('artikel')->orderBy('date','desc')->paginate(15);
         return view('home', compact('artikel'));
     }
 
@@ -31,6 +31,15 @@ class UserController extends Controller
 
         $materi_new = DB::table('artikel')->limit(4)->get();
 
-        return view('materi', compact('materi','materi_new'));
+        $komentar = DB::table('komentar')->where('artikel_id',$id)->orderBy('date','desc')->paginate(10);
+        $balasan_komen = DB::table('balasan_komentar')->get();
+
+        return view('materi', compact('materi','materi_new','komentar','balasan_komen'));
+    }
+
+    public function content($id){
+        $content = DB::table('artikel')->where('kategori_id', $id)->orderBy('date','desc')->paginate(15);
+        $kategori = DB::table('kategori')->where('id',$id)->first();
+        return view('content', compact('content','kategori'));
     }
 }

@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title','Tambah Artikel Baru')
 
 @section('content')
 <div class="container-fluid">
@@ -7,7 +8,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-3">
                 <ul class="breadcrumb breadcrumb-style ">
                     <li class="breadcrumb-item">
-                        <h4 class="page-title border-right-0">Tambah Produk Baru</h4>
+                        <h4 class="page-title border-right-0">Tambah Artikel Baru</h4>
                     </li>
 
                     <li class="breadcrumb-item bcrumb-1">
@@ -15,9 +16,9 @@
                             <i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="breadcrumb-item bcrumb-2">
-                        <a href="#" onClick="return false;">E-commerce</a>
+                        <a href="#" onClick="return false;">Postingan</a>
                     </li>
-                    <li class="breadcrumb-item active">Produk Baru</li>
+                    <li class="breadcrumb-item active">Artikel Baru</li>
                 </ul>
             </div>
         </div>
@@ -62,6 +63,7 @@
                             <strong class="text-danger">{{$message}}</strong>
                             @enderror
                             <div class="form-group">
+                                <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
                                 <h3 class="card-inside-title">Deskripsi Produk</h3>
                                 <div class="form-line">
                                     <textarea id="text-area" rows="4"
@@ -81,7 +83,7 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+    {{-- <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script> --}}
     <script>
         const area = document.getElementById('text-area');
         CKEDITOR.replace(area);

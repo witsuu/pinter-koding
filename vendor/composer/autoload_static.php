@@ -440,6 +440,7 @@ class ComposerStaticInitfc361668ed781e6c2f08836c6ba8e7c7
         'App\\Http\\Controllers\\Admin\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/LoginController.php',
         'App\\Http\\Controllers\\Admin\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BlogController.php',
         'App\\Http\\Controllers\\Admin\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/KategoriController.php',
+        'App\\Http\\Controllers\\Admin\\KomentarController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/KomentarController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',

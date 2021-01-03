@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>@yield('title') - PinterCoding</title>
     <!-- Favicon-->
-    <link rel="icon" href="{{asset("admins/assets/images/favicon.ico")}}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('admins/assets/images/code-logo.svg') }}" type="image/x-icon">
     <!-- Plugins Core Css -->
     <link href="{{asset("admins/assets/css/app.min.css")}}" rel="stylesheet">
     <!-- Custom Css -->
@@ -21,8 +21,8 @@
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="m-t-30">
-                <img class="loading-img-spin" src="{{asset("admins/assets/images/loading.png")}}" width="20" height="20"
-                    alt="admin">
+                <img class="loading-img-spin" src="{{ asset('admins/assets/images/code-logo.svg') }}" width="20"
+                    height="20" alt="admin">
             </div>
             <p>Please wait...</p>
         </div>
@@ -35,7 +35,8 @@
                     data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="#" onClick="return false;" class="bars"></a>
                 <a class="navbar-brand" href="index.html">
-                    <span class="logo-name">PinterCoding</span>
+                    <img src="{{ asset('admins/assets/images/code-logo.svg') }}" alt="--logo--" height="30px">
+                    <span class="logo-name" style="font-size: 21px;font-weight: bold">PinterCoding</span>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -62,16 +63,6 @@
                         <ul class="dropdown-menu pullDown">
                             <li class="body">
                                 <ul class="user_dw_menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="material-icons">person</i>Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" onClick="return false;">
-                                            <i class="material-icons">help</i>Help
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="{{route('admin.logout')}}">
                                             <i class="material-icons">power_settings_new</i>Logout
@@ -138,6 +129,12 @@
                         <a href="{{ route('admin.kategori') }}">
                             <i class="fas fa-list-ul"></i>
                             <span>Kategori</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('home') }}" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Lihat Blog</span>
                         </a>
                     </li>
                 </ul>

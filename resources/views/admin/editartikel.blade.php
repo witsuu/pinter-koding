@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title',$materi->judul.' - Edit Artikel')
 
 @section('content')
 <div class="container-fluid">
@@ -39,6 +40,7 @@
                             <strong class="text-danger">{{$message}}</strong>
                             @enderror
                             <div class="form-group">
+                                <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
                                 <h3 class="card-inside-title">Deskripsi Produk</h3>
                                 <div class="form-line">
                                     <textarea id="text-area" rows="4"
@@ -58,7 +60,6 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
     <script>
         const area = document.getElementById('text-area');
         CKEDITOR.replace(area);

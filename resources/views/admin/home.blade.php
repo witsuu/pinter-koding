@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title','Dashboard')
 
 @section('content')
 <div class="container-fluid">
@@ -7,17 +8,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <ul class="breadcrumb breadcrumb-style ">
                     <li class="breadcrumb-item">
-                        <h4 class="page-title">List Artikel</h4>
+                        <h4 class="page-title">List Postingan</h4>
                     </li>
                     <li class="breadcrumb-item bcrumb-1">
                         <a href="{{route('admin.dashboard')}}">
                             <i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="breadcrumb-item bcrumb-2">
-                        <a href="#" onClick="return false;">Blog</a>
-                    </li>
-                    <li class="breadcrumb-item bcrumb-2">
-                        <a href="#" onClick="return false;">Artikel</a>
+                        <a href="#" onClick="return false;">Postingan</a>
                     </li>
                 </ul>
                 <a href="{{route('admin.new-artikel')}}">

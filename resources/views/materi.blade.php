@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Materi')
+@section('title',$materi->judul)
 
 @section('content')
 <div class="contentmateri bgc-abu d-block align-c">
@@ -48,35 +48,87 @@
                         </div>
                         <div class="row mt-3">
                             <div class="body-materi bgc-white border border-r pad-lr">
-                                <h2>komentar</h2>
+                                <h2 class="mt-3">komentar</h2>
                                 <hr>
-                                <div class="pad-lr">
-                                    <input class="mb-li" type="text" placeholder="Nama" value=""> <br>
-                                    <input class="mb-li" type="email" placeholder="masukkan Email" value=""> <br>
-                                    <textarea name="comment" rows="6" cols="30"
-                                        placeholder="masukkan komentar"></textarea>
-                                    <br>
-                                    <button class=" pad-lr" type="submit" name="button">Kirim</button>
+                                <div class="border p-3 rounded" style="background-color: rgb(207, 207, 207)">
+                                    <form action="{{ route('admin.store-komentar', ['id'=>$materi->id]) }}"
+                                        method="post">
+                                        @csrf
+                                        <label class="mb-0">Nama</label>
+                                        <input class="form-control mb-2" type="text" name="nama">
+                                        <label class="mb-0">Komentar</label>
+                                        <textarea name="comment" class="form-control mb-2" rows="3"
+                                            cols="30"></textarea>
+                                        <button class="btn btn-secondary w-25" type="submit"
+                                            name="button">Kirim</button>
+                                    </form>
                                 </div>
-                                <div class="border-abu w-100 mt mb">
-                                    <div class="d-flex pad-lr pad">
-                                        <img src="img/no-thumbnail.jpg" style="width:50px;">
-                                        <h5 class="pad-lr">Nama</h5>
+                                <div class="border-abu w-100 mt mb pt-2" id="komentar">
+                                    @foreach ($komentar as $komen)
+                                    <div class="pad-lr pad d-flex">
+                                        <img src="{{ asset('assets/images/blank-profile.png') }}"
+                                            style="width:50px;max-height: 50px" class="rounded-circle">
+                                        <div class="pl-3">
+                                            <strong class="">{!!$komen->nama!!} <small class>{!!date('d M Y
+                                                    H:i',$komen->date)!!}</small></strong>
+                                            <p class="mb-0" style="font-size: 14px;text-transform: none">
+                                                {!!$komen->isi_komen!!}</p>
+                                            <button style="background-color: rgba(255, 255, 255, 0);cursor: pointer;"
+                                                class="border-0 text-primary" type="button" data-toggle="modal"
+                                                data-target="{!!'#komen'.$komen->id!!}">balas</button>
+                                            @foreach ($balasan_komen as $item)
+                                            @if ($item->komentar_id == $komen->id)
+                                            <div class="d-flex mt-2">
+                                                <img src="{{ asset('assets/images/blank-profile.png') }}"
+                                                    style="width:50px;max-height: 50px" class="rounded-circle">
+                                                <div class="pl-3">
+                                                    <strong class="">{!!$item->nama!!} <small class>{!!date('d M Y
+                                                            H:i',$item->date)!!}</small></strong>
+                                                    <p class="mb-0" style="font-size: 14px;text-transform: none">
+                                                        {!!$item->isi_komentar!!}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            @endif
+                                            @endforeach
+                                            <div class="modal fade" id={!!'komen'.$komen->id!!} tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Balas Komentar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form
+                                                            action="{{ route('admin.balas-komentar', ['id'=>$komen->id]) }}"
+                                                            method="post">
+                                                            <div class="modal-body">
+                                                                @csrf
+                                                                <label class="mb-0">Nama</label>
+                                                                <input class="form-control mb-2" type="text"
+                                                                    name="nama">
+                                                                <label class="mb-0">Komentar</label>
+                                                                <textarea name="comment" class="form-control mb-2"
+                                                                    rows="3" cols="30"></textarea>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Tutup</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Kirim</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <hr class="m-auto w-95">
-                                    <div class="pad-lr w-100 border-bot">
-                                        isi komentar <br>
-                                        <a href="#" class="balas-comment">balas</a>
-                                    </div>
-                                    <div class="d-flex pad-lr pad">
-                                        <img src="img/no-thumbnail.jpg" style="width:50px;">
-                                        <h5 class="pad-lr">Nama2</h5>
-                                    </div>
-                                    <hr class="m-auto w-95">
-                                    <div class="pad-lr w-100 border-bot">
-                                        isi komentar <br>
-                                        <a href="#" class="balas-comment">balas</a>
-                                    </div>
+                                    @endforeach
+                                    <nav aria-label="Page pagination" class="ml-2 mt-2">
+                                        {!!$komentar->links()!!}
+                                    </nav>
                                 </div>
                             </div>
                         </div>
@@ -86,4 +138,6 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('js/app.js') }}"></script>
 @endsection

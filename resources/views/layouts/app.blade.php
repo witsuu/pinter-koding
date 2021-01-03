@@ -3,42 +3,37 @@
 
 <head>
     <meta charset="utf-8" />
+    <link rel="shortcut icon" href="{{ asset('admins/assets/images/code-logo.svg') }}" type="image/x-icon">
     <link rel="stylesheet" href={{ asset('assets/css/style.css') }} />
     <meta name="viewport" content="width=device-width" , intial-scale="1" />
     <script src={{ asset('assets/js/jquery.js') }}></script>
     <title>@yield('title') - PinterCoding</title>
     <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="nav p-lr-null pos-sticky">
+    <div class="bg-dark">
+        <div class="container text-right" style="">
+            <a href="{{ route('admin') }}" target="_blank" rel="noopener noreferrer" class="text-light">Admin Panel
+                >></a>
+        </div>
+    </div>
+    <div class="nav p-lr-null pos-sticky" style="background-color: #022b3a">
         <div class="container align-c just-beetwen">
             <a class="link" href="{{ route('home') }}"> <span>PinterCoding</span> </a>
             <ul class="listDesktop d-flex pad mr-auto flex-row">
-                <li class="mb-null"><a href="php.html">PHP</a></li>
-                <li class="mb-null"><a href="java.html">Java</a></li>
-                <li class="mb-null"><a href="python.html">Python</a></li>
-                <li class="mb-null"><a href="javascript.html">Javascript</a></li>
-                <li class="mb-null" style="cursor:default;">|</li>
                 <li class="mb-null">
-                    <a href="{{ route('tutorial') }}" target="_blank">Lainnya</a>
+                    <a href="{{ route('tutorial') }}">Tutorial</a>
                 </li>
             </ul>
-            <a href="{{route('admin')}}">
-                <button class="tombolsearch1" type="button">
-                    Admin Panel
-                </button>
-            </a>
             <ul class="listDesktop1 d-none flex-row just-beetwen mt w-100"
                 style="padding-inline-start: 0;flex-wrap: wrap">
-                <li class="mb-null"><a href="php.html">PHP</a></li>
-                <li class="mb-null"><a href="java.html">Java</a></li>
-                <li class="mb-null"><a href="javascript.html">Javascript</a></li>
                 <li class="mb-null">
-                    <a href="#" target="_blank">Lainnya</a>
+                    <a href="#" target="_blank">Tutorial</a>
                 </li>
             </ul>
         </div>

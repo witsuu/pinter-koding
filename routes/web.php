@@ -15,6 +15,7 @@ Route::get('/','UserController@index')->name('home');
 Route::post('subscribe','UserController@newsLetter')->name('subscribe');
 Route::get('tutorial','UserController@tutorial')->name('tutorial');
 Route::get('materi/{id}','UserController@materi')->name('materi');
+Route::get('tutorial/{id}','UserController@content')->name('content');
 
 Route::get('admin', function(){
     return redirect()->route('admin.dashboard');
@@ -40,4 +41,6 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
 
     Route::get('komentar','KomentarController@index')->name('komentar');
     Route::get('komentar/delete/{id}','KomentarController@delete')->name('delete-komentar');
+    Route::post('komentar/store/{id}','KomentarController@store')->name('store-komentar');
+    Route::post('komentar/balas/store/{id}','KomentarController@balasKomen')->name('balas-komentar');
 });

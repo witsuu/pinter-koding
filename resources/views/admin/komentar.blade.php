@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@section('title','Komentar')
 
 @section('content')
 <div class="container-fluid">
@@ -71,7 +72,7 @@
                     <p>{{__("Data yang akan dihapus akan hilang!")}}</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{route('admin.delete-kategori',$item->id)}}">
+                    <a href="{{route('admin.delete-komentar',$item->id)}}">
                         <button type="button" class="btn btn-info ">Konfirmasi</button>
                     </a>
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Batal</button>

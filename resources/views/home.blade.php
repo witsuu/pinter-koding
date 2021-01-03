@@ -3,7 +3,7 @@
 
 @section('content')
 <header>
-    <div class="baju p-lr-null">
+    <div class="baju p-lr-null" style="background-color: #1f7a8c">
         <div class="container">
             <div class="row">
                 <div class="judul">
@@ -31,7 +31,7 @@
             </div>
             @endforeach
         </div>
-        <nav class="d-flex justify-content-center">{{$artikel->links()}}</nav>
+        <nav class="d-flex justify-content-center" aria-label="Page pagination">{{$artikel->links()}}</nav>
     </div>
 </div>
 <section>
